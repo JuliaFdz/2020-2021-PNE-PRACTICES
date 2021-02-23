@@ -28,4 +28,4 @@ if correct_sequence(dna):
 else:
     print('Not a valid sequence of dna.')
 
-# if is from a file u must crate a read file def and incorporated it to the code
+# if it is from a file u must crate a read file def and incorporate it to the code
