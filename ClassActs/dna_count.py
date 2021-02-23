@@ -17,6 +17,7 @@ def count_bases(dna):
         else:
             t += 1
     return a, c, g, t
+
 dna = input('Introduce the sequence:')
 if correct_sequence(dna):
     print('Total lenght:', len(dna))
@@ -27,5 +28,24 @@ if correct_sequence(dna):
     print('T:', t)
 else:
     print('Not a valid sequence of dna.')
+# 2nd way
+def reading_file(filename):
+    with open(filename, 'r') as f:
+        dna = f.read()
+        dna = dna.replace('\n','')
+    return dna
 
+try:
+    dna = reading_file(input('Introduce the filename:'))
+    if correct_sequence(dna):
+        print('Total lenght:', len(dna))
+        a, c, g, t = count_bases(dna)
+        print('A: ', a)
+        print('C: ', c)
+        print('G: ', g)
+        print('T:', t)
+    else:
+        print('Not a valid sequence of dna.')
+except FileExistsError:
+    print('The file has not been found.')
 # if it is from a file u must crate a read file def and incorporate it to the code
