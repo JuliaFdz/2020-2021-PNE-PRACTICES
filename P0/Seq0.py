@@ -80,7 +80,9 @@ def biggest(seq):
     gene_dict = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
     for d in seq:
         gene_dict[d] += 1
-    return max(gene_dict.values())
+    location = gene_dict.find(max(gene_dict.values()))
+    return gene_dict[location]
+
 
 
 
