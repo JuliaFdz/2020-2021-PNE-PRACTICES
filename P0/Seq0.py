@@ -46,7 +46,7 @@ def seq_count(seq):
 
 # 2nd way, showing u know pgmn´s
 
-def  seq_reverse(seq):
+def seq_reverse(seq):
     n = 1
     new_seq = []
     while len(seq) > n:
