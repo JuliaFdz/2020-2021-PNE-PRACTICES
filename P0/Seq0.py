@@ -54,5 +54,33 @@ def seq_reverse(seq):
         n += 1
     return new_seq
 
+def seq_complement0(seq):
+    new_seq = ''
+    for d in seq:
+        if d == 'A':
+            new_seq += 'T'
+        elif d == 'C':
+            new_seq += 'G'
+        elif d == 'G':
+            new_seq += 'C'
+        elif d == 'T':
+            new_seq += 'A'
+        else:
+            return 'there is seq error.'
+    return new_seq
+# probando con dict:
+def seq_complement(seq):
+    gene_dict = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}
+    new_seq = ''
+    for d in seq:
+        new_seq += gene_dict[d]
+    return new_seq
+
+def biggest(seq):
+    gene_dict = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
+    for d in seq:
+        gene_dict[d] += 1
+    return max(gene_dict.values())
+
 
 
