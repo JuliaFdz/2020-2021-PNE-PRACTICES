@@ -1,7 +1,7 @@
 import Seq0
 
 FOLDER = './sequences/'  # each dot means a folder
-ID = 'U5'
+ID = 'U5.txt'
 
 U5_seq = Seq0.seq_read_fasta(FOLDER + ID)
 

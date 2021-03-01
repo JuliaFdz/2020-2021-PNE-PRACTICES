@@ -44,4 +44,13 @@ def seq_count(seq):
         gene_dict[d] += 1
     return gene_dict
 
-# 2nd way, showing u know pgmns
+# 2nd way, showing u know pgmn´s
+
+def  seq_reverse(seq):
+    n = 1
+    new_seq = []
+    while seq > n:
+        new_seq.append(seq[-n])
+    return new_seq
+
+
