@@ -48,9 +48,10 @@ def seq_count(seq):
 
 def seq_reverse(seq):
     n = 1
-    new_seq = []
-    while len(seq) > n:
-        new_seq.append(seq[-n])
+    new_seq = ''
+    while len(seq) >= n:
+        new_seq += seq[-n]
+        n += 1
     return new_seq
 
 
