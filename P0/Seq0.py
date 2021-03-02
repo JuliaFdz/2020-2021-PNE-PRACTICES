@@ -66,7 +66,7 @@ def seq_complement0(seq):
         elif d == 'T':
             new_seq += 'A'
         else:
-            return 'there is seq error.'
+            return 'there is a seq error.'
     return new_seq
 # probando con dict:
 def seq_complement(seq):
@@ -76,12 +76,16 @@ def seq_complement(seq):
         new_seq += gene_dict[d]
     return new_seq
 
-def biggest(seq):
+def most_frq_base(seq):
+    frq_base = ''
     gene_dict = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
     for d in seq:
         gene_dict[d] += 1
-    location = gene_dict.find(max(gene_dict.values()))
-    return gene_dict[location]
+    for n in gene_dict.keys():
+        if gene_dict[n] == max(gene_dict.values()):
+            frq_base += n + ' '
+    return frq_base
+
 
 
 
