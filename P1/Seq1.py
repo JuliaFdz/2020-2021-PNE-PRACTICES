@@ -1,4 +1,4 @@
-import termcolor
+import P0.Seq0
 
 class Seq:
     """A class for representing sequences"""
@@ -35,6 +35,11 @@ class Seq:
             if c != 'A' and c != 'C' and c != 'G' and c != 'T':
                 return False
         return True
+    @staticmethod
+    def print_seq(list_sequences):
+        for i in range(0, len(list_sequences)):
+            print('Sequences', i,':(length:', list_sequences[i].len(), ')', list_sequences[i])
+
 
 
     def __str__(self):

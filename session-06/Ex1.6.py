@@ -18,7 +18,7 @@ class Seq:
 
     @staticmethod
     def static_function(text):
-        print(text)
+        print(text) # can not work with the attributes
 
 
     def __str__(self):
@@ -36,8 +36,16 @@ class Seq:
 s1 = Seq("AGTACACTGGT")
 s2 = Seq("CGTAAC")
 
-# -- Printing the objects
-#print(f"Sequence 1: {s1}")
-#print(f"  Length: {s1.len()}")
-#print(f"Sequence 2: {s2}")
-#print(f"  Length: {s2.len()}")
+ #-- Printing the objects
+print(f"Sequence 1: {s1}")
+print(f"  Length: {s1.len()}")
+print(f"Sequence 2: {s2}")
+print(f"  Length: {s2.len()}")
+
+#s1.print_bases() # class instance
+#Seq.static_function('hello') #class definition
+
+# check if the method is going to be used a lot
+# self is personal to each instance
+
+# RUN python Ex1.6.py
