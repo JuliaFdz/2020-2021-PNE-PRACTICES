@@ -1,4 +1,6 @@
 import P0.Seq0
+import termcolor
+
 
 class Seq:
     """A class for representing sequences"""
@@ -11,6 +13,7 @@ class Seq:
         # passed as argument when creating the object
         if strbases == Seq.NULL_SEQUENCE:
             print('Null seq created')
+            self.strbases = strbases
         else:
             if Seq.is_valid_sequence_2(strbases):
                 print('New seq has been created')
@@ -38,7 +41,8 @@ class Seq:
     @staticmethod
     def print_seq(list_sequences):
         for i in range(0, len(list_sequences)):
-            print('Sequences', i,':(length:', list_sequences[i].len(), ')', list_sequences[i])
+            text = 'Sequences'+ str(i) +':(length:' +  str(list_sequences[i].len()) + ')' + str(list_sequences[i])
+            termcolor.cprint(text,'yellow')
 
 
 
@@ -83,7 +87,11 @@ class Seq:
             return self.strbases[::-1]
 
 
-
+def generate_seqs(pattern, number):
+    list_seq = []
+    for i in range(0, number): # sequences as number chosen
+        list_seq.append(Seq(pattern * (i + 1))) # i = 0 -> A // i = 1 -> AA
+    return list_seq
 
 def test_sequence():
     s1 = Seq()
