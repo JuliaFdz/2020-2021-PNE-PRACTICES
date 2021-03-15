@@ -115,6 +115,17 @@ class Seq:
         return self.strbases
         # return take_out_first_line(Path(filename).read_text())
 
+    def most_frq_base(self):
+        frq_base = ''
+        gene_dict = {'A': 0, 'C': 0, 'G': 0, 'T': 0}
+        for d in self.strbases:
+            gene_dict[d] += 1
+        for n in gene_dict.keys():
+            if gene_dict[n] == max(gene_dict.values()):
+                frq_base += n + ' '
+        return frq_base
+
+
 
 def generate_seqs(pattern, number):
     list_seq = []
