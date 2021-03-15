@@ -1,7 +1,7 @@
 import Seq1
 
 def print_result(i, sequence):
-    print('Sequence' + str(i) + ':(Length ' + str(sequence.len()) + ')' + str(ssequence))
+    print('Sequence ' + str(i) + ': (Length ' + str(sequence.len()) + ') ' + str(sequence))
     print('Bases:', sequence.count())
 
 print('-----| Practice 1, Exercise 6 |------')

@@ -75,9 +75,11 @@ class Seq:
                 elif ch == "T":
                     t += 1
             return a, c, g, t
+
     def count(self):
         a, c, t, g, = self.count_bases()
         return {'A': a, 'C' : c, 'G': g, 'T' : t }
+
     def reverse(self):
         if self.strbases == Seq.NULL_SEQUENCE:
             return 'Null'
@@ -86,12 +88,40 @@ class Seq:
         else:
             return self.strbases[::-1]
 
+    def complement(self):
+        if self.strbases == Seq.NULL_SEQUENCE:
+            return Seq.NULL_SEQUENCE
+        elif self.strbases == Seq.INVALID_SEQUENCE:
+            return Seq.INVALID_SEQUENCE
+        else:
+            complement = ''
+            for ch in self.strbases:
+                if ch == "A":
+                    complement += "T"
+                elif ch == "C":
+                    complement += "G"
+                elif ch == "G":
+                    complement += "C"
+                elif ch == "T":
+                    complement += "A"
+            return complement
+
+    @staticmethod
+    def take_out_first_line(seq):
+        return seq[seq.find('\n') + 1:].replace('\n', '')
+
+    def seq_read_fasta(self, filename):
+        self.strbases = Seq.take_out_first_line(Path(filename).read_text())
+        # return take_out_first_line(Path(filename).read_text())
+
 
 def generate_seqs(pattern, number):
     list_seq = []
     for i in range(0, number): # sequences as number chosen
         list_seq.append(Seq(pattern * (i + 1))) # i = 0 -> A // i = 1 -> AA
     return list_seq
+
+
 
 def test_sequence():
     s1 = Seq()

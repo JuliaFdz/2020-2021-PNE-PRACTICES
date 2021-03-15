@@ -1,4 +1,4 @@
-from Seq1 import test_sequence
+from Seq1 import Seq
 
 def print_result(i, sequence):
     print('Sequence ' + str(1) + ': (Length ' + str(sequence.len()) + ' ) ' + str(sequence))
@@ -6,9 +6,9 @@ def print_result(i, sequence):
     print('Rev:', sequence.reverse())
     print('Comp: ', sequence.complement())
 
-print('-----| Practice 1, Exercise 8 |------')
-#  for future knowledge
-list_sequences = list(test_sequence())
-for i in range(0, len(list_sequences)):
-    print_result(i, list_sequences[i])
-    print()
+PROJECT_PATH = './project/'
+
+print('-----| Practice 1, Exercise 9 |------')
+s1 = Seq()
+s1.seq_read_fasta(PROJECT_PATH + 'ADA.txt')
+print_result('',s1)

@@ -1,7 +1,7 @@
-from Seq1 import seq
+from Seq1 import Seq
 
 def print_result(i, sequence):
-    print('Sequence' + str(i) + ':(Length ' + str(sequence.len()) + ')' + str(ssequence))
+    print('Sequence ' + str(i) + ': (Length ' + str(sequence.len()) + ') ' + str(sequence))
     a, c, t, g = sequence.count_bases()
     print('A:'+ str(a) + 'C:' + str(c) + 'G:' + str(g) + 'T:' + str(t) )
 
