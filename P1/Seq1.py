@@ -1,6 +1,6 @@
 import P0.Seq0
 import termcolor
-
+from pathlib import Path
 
 class Seq:
     """A class for representing sequences"""
@@ -112,6 +112,7 @@ class Seq:
 
     def seq_read_fasta(self, filename):
         self.strbases = Seq.take_out_first_line(Path(filename).read_text())
+        return self.strbases
         # return take_out_first_line(Path(filename).read_text())
 
 
