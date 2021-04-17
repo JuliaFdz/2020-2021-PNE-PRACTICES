@@ -1,6 +1,6 @@
 import socket
 
-# in order to run --> cd cdP2 python server.py -->split vertically the terminal --> python server.py
+# in order to run --> cd cdP2 python seq-server.py -->split vertically the terminal --> python seq-server.py
 PORT = 6132  # client and server must have same port and IP
 IP = "127.0.0.1"
 
