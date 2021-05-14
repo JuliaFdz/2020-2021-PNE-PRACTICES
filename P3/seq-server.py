@@ -1,5 +1,8 @@
 import socket
 import server_utils
+
+list_sequences = ['ATTCTATGGATGACT', 'AACCTTTGAGATCAT', 'ATTGTTCTTCTTACT','AATACTTTTATCCCT', 'AAATTTCTCACTTTA']
+
 # -- Step 1: create the socket
 ls = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -51,7 +54,7 @@ while True:
     formatted_msg = server_utils.format_command(msg)
     print(formatted_msg)
 
-    if formatted_msg == 'PING':
+    if formatted_msg == "'PING'":
         server_utils.ping()
         # -- Send a response message to the client
         response = 'ok'
