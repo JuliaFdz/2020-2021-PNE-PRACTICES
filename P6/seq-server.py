@@ -1,6 +1,6 @@
 import socket
 import server_utils
-import termcolor
+import  termcolor
 
 list_sequences = ['ATTCTATGGATGACT', 'AACCTTTGAGATCAT', 'ATTGTTCTTCTTACT','AATACTTTTATCCCT', 'AAATTTCTCACTTTA']
 
@@ -54,23 +54,6 @@ while True:
     msg = msg_raw.decode()
     formatted_msg = server_utils.format_command(msg)
     print(formatted_msg)
-
-   # if len(formatted_msg) == 1:
-        #command = formatted_msg[0]
-    #else::
-        #command = formatted_msg[0]
-        #argument = formatted_msg[1]
-
-    #if formatted_msg == "'PING'":
-        #server_utils.ping()
-        # -- Send a response message to the client
-        #response = 'ok'
-       # cs.send(str(response).encode())
-    #else:
-     #   response = 'NO available command'
-      #  cs.send(str(response).encode())
-    # -- Close the data socket
-    #cs.close()
     if len(formatted_msg) == 1:
         command = formatted_msg[0]
     else:
@@ -99,6 +82,8 @@ while True:
         response = "Not available command"
         termcolor.cprint(response, "red")
         cs.send(response.encode())
-    cs.close()
+
+
+
 
 #echo 2 | nc -w 1 127.0.0.1 8080
