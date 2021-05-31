@@ -1,6 +1,8 @@
 from Seq1 import Seq
 import colorama
 import termcolor
+from jinja2 import Template
+from pathlib import Path
 
 def print_colored(message, color):
     colorama.init(strip="False")
@@ -9,6 +11,9 @@ def print_colored(message, color):
 def format_command(command):
     return command.replace('\n', '').replace('\r', '')
 
+def read_template_html_file(filename):
+    content = Template(Path(filename).read_text())
+    return content
 
 def ping(cs):
     print_colored('Print', 'green')
@@ -16,15 +21,17 @@ def ping(cs):
     print(response)
     cs.send(str(response).encode())
 
-def get(cs, list_sequences, seq_number):
-    print_colored('GET', 'yellow')
-    try:
-        response = list_sequences[int(seq_number)] + '.\n'
-        print(response)
-    except IndexError:
-        response = 'Error: no sequence with index' + str(seq_number) + '.\n'
-        print(response)
-    cs.send(response.encode())
+def get( list_sequences, seq_number):
+
+    #sequence = list_sequences[int(seq_number)]
+    context = {
+        'number' : seq_number,
+        'sequence': list_sequences[int(seq_number)],
+    }
+    contents = read_template_html_file('./HTML/get.html').render(context=context)
+    return contents
+
+
 
 def info(sequence):
     list_bases = ["A", "C", "T", "G"]
@@ -48,7 +55,7 @@ def info(sequence):
         },
         "operation": "Info"
     }
-    contents = read_template_html_file(HTML_ASSETS + "operation.html").render(context=context)
+    contents = read_template_html_file("./HTML/operation.html").render(context=context)
     return contents
 
 def comp(sequence):
@@ -59,7 +66,7 @@ def comp(sequence):
         "result": comp_seq,
         "operation": "Comp"
     }
-    contents = read_template_html_file(HTML_ASSETS + "operation.html").render(context=context)
+    contents = read_template_html_file("./HTML/operation.html").render(context=context)
     return contents
 
 def rev(sequence):
@@ -70,7 +77,7 @@ def rev(sequence):
         "result": rev_seq,
         "operation": "Rev"
     }
-    contents = read_template_html_file(HTML_ASSETS + "operation.html").render(context=context)
+    contents = read_template_html_file("./HTML/operation.html").render(context=context)
     return contents
 
 
@@ -82,5 +89,5 @@ def gene(gene):
         "gene_name": gene,
         "gene_contents": s1.strbases
     }
-    contents = read_template_html_file(HTML_ASSETS + "gene.html").render(context=context)
+    contents = read_template_html_file("./HTML/gene.html").render(context=context)
     return contents

@@ -116,7 +116,4 @@ while True:
         # -- Close the socket
         cs.close()
 
-# localhost:8080
-# p -> Texto peque
-# h -> texto grande
-# a -> link
+
