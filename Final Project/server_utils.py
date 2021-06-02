@@ -236,9 +236,9 @@ def length( specie, chromosome, list):
             else:
                 i += 1
     context = {
-        'Specie': specie,
-        "Chromosome": chromosome,
-        'Direction': direccion
+        'specie': specie,
+        "chromosome": chromosome,
+        'direction': direccion
     }
     contents = read_template_html_file('HTML/length.html').render(context=context)
     return contents
