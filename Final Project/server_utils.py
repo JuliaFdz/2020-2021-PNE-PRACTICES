@@ -109,4 +109,33 @@ def list(list_number, list):
         end += 1
     contents = read_template_html_file('HTML/list.html').render(context=context)
     return contents
+def karyotype(specie, list):
+    kary = ''
+    if specie == list[0]:
+        kary = ['http://www.ensembl.org/Homo_sapiens/Location/Genome',1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 'x', 'y']
+    elif specie == list[1]:
+        kary= ['http://www.ensembl.org/Felis_catus/Location/Genome','A1', 'A2', 'A3', 'B1', 'B2', 'B3', 'B4','C1', 'C2', 'D1', 'D2', 'D3', 'D4','E1', 'E2', 'E3', 'F1', 'F2', 'x']
+    elif specie == list[2]:
+        kary = ['http://www.ensembl.org/Mus_musculus/Location/Genome', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 'x', 'y']
+    elif specie == list[3]:
+        kary = ['Not provided']
+    elif specie == list[4]:
+        kary = ['http://www.ensembl.org/Balaenoptera_musculus/Location/Genome',1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 'x', 'y']
+    elif specie == list[5]:
+        kary = ['http://www.ensembl.org/Gorilla_gorilla/Location/Genome',1, '2A', '2B',3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 'x']
+    elif specie == list[6]:
+        kary = ['http://www.ensembl.org/Parus_major/Location/Genome',1, 2, 3, 4, '4A', 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, '25LG1', '25LG2', 26, 27, 28, 'LGE22', 'Z']
+    elif specie == list[7]:
+        kary = ['http://www.ensembl.org/Ictalurus_punctatus/Location/Genome', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+    elif specie == list[8]:
+        kary = ['http://www.ensembl.org/Sciurus_vulgaris/Location/Genome', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 'x', 'y']
+    elif specie == list[9]:
+        kary = ['http://www.ensembl.org/Danio_rerio/Location/Genome', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+
+    context = {
+        "specie": specie,
+        'karyotype': kary
+    }
+    contents = read_template_html_file('HTML/karyotype.html').render(context=context)
+    return contents
 

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+    <html lang="en" dir="ltr">
+      <head>
+        <meta charset="utf-8">
+        <title>KARYOTYPE</title>
+      </head>
+      <body style="background-color: lightblue;">
+        <h1>{{context.specie}}</h1>
+        <p>- Karyotype -</p>
+        <font size="2" face="Comic Sans MS,arial,verdana">
+        The information available is: <br>
+          </font>
+        <a href="{{context.karyotype[0]}}">BE SURE</a>
+        {% for n in context.karyotype %}
+         {{n}} <br>
+        {% endfor %}
+        <a href="/">Main page</a>
+      </body>
+    </html>

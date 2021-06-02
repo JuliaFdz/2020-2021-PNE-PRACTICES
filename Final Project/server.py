@@ -7,6 +7,7 @@ import server_utils as su
 
 # Define the Server's port
 PORT = 8080
+
 LIST_SPECIES = ['Human', 'Cat', 'Mouse','Clown Anemonefish','Blue Whale','Gorilla','Great Tit','Channel Catfish','Eurasian Red Squirrel', 'Zebrafish']
 DICT_GENES = {
     "FRAT1": "ENSG00000165879",
@@ -67,9 +68,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif path_name == '/list':
             list_number = arguments['list'][0]
             contents = su.list(list_number, LIST_SPECIES)
-        elif path_name == '/gene':
-            gene = arguments['gene'][0]
-            contents = su.gene(gene)
+        elif path_name == '/karyotype':
+            specie = arguments['karyotype'][0]
+            contents = su.karyotype(specie, LIST_SPECIES)
 
         else:
             contents = su.read_template_html_file('./HTML/ERROR.html').render()
