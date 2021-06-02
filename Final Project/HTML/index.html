@@ -37,8 +37,12 @@
         <form action="length" method="get">
           3. Chromosome Length: <br>
             Select the Specie:
-              <input type="text" name="msg">
-              <input type="submit" value="Send"><br>
+            <select name="election">
+          {% for n in context.list_species %}
+              <option value="{{n}}" >{{n}}</option>
+          {% endfor %}
+          </select>
+          <input type="submit" value="Send"> <br>
             Select the Chromosome:
               <input type="text" name="msg">
               <input type="submit" value="Send"><br>

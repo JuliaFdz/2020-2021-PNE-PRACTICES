@@ -71,6 +71,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif path_name == '/karyotype':
             specie = arguments['karyotype'][0]
             contents = su.karyotype(specie, LIST_SPECIES)
+        elif path_name == '/karyotype':
+            specie = arguments['karyotype'][0]
+            contents = su.karyotype(specie, LIST_SPECIES)
 
         else:
             contents = su.read_template_html_file('./HTML/ERROR.html').render()
