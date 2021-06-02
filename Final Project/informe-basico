@@ -41,7 +41,7 @@
           {% for n in context.list_species %}
               <option value="{{n}}" >{{n}}</option>
           {% endfor %}
-          </select> <br>
+          </select>
             Select the Chromosome:
               <input type="text" name="msg">
               <input type="submit" value="Send"><br>
@@ -49,3 +49,4 @@
             </font>
       </body>
     </html>
+ prueba 1 _-- quitar errores, facilitando el acceso

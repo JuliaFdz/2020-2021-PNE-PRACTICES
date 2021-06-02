@@ -71,9 +71,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif path_name == '/karyotype':
             specie = arguments['karyotype'][0]
             contents = su.karyotype(specie, LIST_SPECIES)
-        elif path_name == '/karyotype':
-            specie = arguments['karyotype'][0]
-            contents = su.karyotype(specie, LIST_SPECIES)
+        elif path_name == '/length':
+            election = arguments['election'][0]
+            info = arguments['msg'][0]
+            contents = su.length(election, info, LIST_SPECIES)
 
         else:
             contents = su.read_template_html_file('./HTML/ERROR.html').render()

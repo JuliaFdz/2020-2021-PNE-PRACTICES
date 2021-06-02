@@ -138,4 +138,12 @@ def karyotype(specie, list):
     }
     contents = read_template_html_file('HTML/karyotype.html').render(context=context)
     return contents
+def length( specie, chromosome, list):
+    if specie == list[1]:
+        kary = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+                14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 'x', 'y']
+        while True and i < len(kary):
+            i = 0
+            if chromosome == kary[i]:
+                
 
