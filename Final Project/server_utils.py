@@ -29,7 +29,7 @@ def get( list_sequences, seq_number):
         'number' : seq_number,
         'sequence': list_sequences[int(seq_number)],
     }
-    contents = read_template_html_file('./HTML/get.html').render(context=context)
+    contents = read_template_html_file('HTML/get.HTML').render(context=context)
     return contents
 
 
@@ -56,7 +56,7 @@ def info(sequence):
         },
         "operation": "Info"
     }
-    contents = read_template_html_file("./HTML/operation.html").render(context=context)
+    contents = read_template_html_file("HTML/operation.HTML").render(context=context)
     return contents
 
 def comp(sequence):
@@ -67,7 +67,7 @@ def comp(sequence):
         "result": comp_seq,
         "operation": "Comp"
     }
-    contents = read_template_html_file("./HTML/operation.html").render(context=context)
+    contents = read_template_html_file("HTML/operation.HTML").render(context=context)
     return contents
 
 def rev(sequence):
@@ -78,7 +78,7 @@ def rev(sequence):
         "result": rev_seq,
         "operation": "Rev"
     }
-    contents = read_template_html_file("./HTML/operation.html").render(context=context)
+    contents = read_template_html_file("HTML/operation.HTML").render(context=context)
     return contents
 
 
@@ -91,5 +91,18 @@ def gene(gene):
         "gene_name": gene,
         "gene_contents": s1.strbases
     }
-    contents = read_template_html_file("./HTML/gene.html").render(context=context)
+    contents = read_template_html_file("HTML/gene.HTML").render(context=context)
     return contents
+
+def list( list, list_number):
+    i = 0
+    context = {}
+    while i != list_number:
+        context[i] = {
+            'number': list_number,
+            'sequence': list[i],
+        }
+        contents = read_template_html_file('HTML/list.html').render(context=context)
+        i += 1
+    return contents
+

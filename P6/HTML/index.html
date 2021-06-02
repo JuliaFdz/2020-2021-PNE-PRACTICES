@@ -11,35 +11,33 @@
         <form action="ping" method="get">
           Is the server available?: <input type="submit" value="PING">
           </form>
-      <form action="get" method="get">
-          Select the SEQ: <select name="sequence">
-        {% for n in range(0,context.n_sequences) %}
-        <option value="{{n}}" >{{n}}</option>
-        {% endfor %}
-      </select>
-        <input type="submit" value="GET">
-          </form>
-      <hr>
-      <form action="gene" method="get">
-          Select the gene: <select name="gene">
-        {% for n in context.list_genes %}
-        <option value="{{n}}" >{{n}}</option>
-        {% endfor %}
-      </select>
-        <input type="submit" value="GENE">
-          </form>
-      <hr>
-      <form action="operation" method="get">
-        Write a sequence: <input type="text" name="sequence">
-        <br>
-        Select operation:
-        {% for n in context.operation_list %}
-                <input type="radio" name="calculation" value="{{n}}"> {{n}}
-            {% endfor %}
-        <br>
+        <form action="get" method="get">
+            Select the SEQ: <select name="sequence">
+          {% for n in range(0,context.n_sequences) %}
+          <option value="{{n}}" >{{n}}</option>
+          {% endfor %}
+        </select>
+          <input type="submit" value="GET">
+            </form>
+        <hr>
+        <form action="gene" method="get">
+            Select the gene: <select name="gene">
+          {% for n in context.list_genes %}
+          <option value="{{n}}" >{{n}}</option>
+          {% endfor %}
+        </select>
+          <input type="submit" value="GENE">
+            </form>
+        <hr>
+        <form action="operation" method="get">
+          Write a sequence: <input type="text" name="sequence"> <br>
+          Select operation:
+          {% for n in context.operation_list %}
+            <input type="radio" name="calculation" value="{{n}}"> {{n}}
+          {% endfor %}
 
-        <input type="submit" value="OPERATE!">
-          </form>
+          <input type="submit" value="OPERATE!">
+            </form>
 
       </body>
     </html>

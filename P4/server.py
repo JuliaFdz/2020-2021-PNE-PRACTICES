@@ -52,28 +52,28 @@ def process_client(s):
     status_line = "HTTP/1.1 200 OK\n"
 
     # -- Add the Content-Type header
-    header = "Content-Type: text/html\n"
+    header = "Content-Type: text/HTML\n"
 
     if path_name == "/":
-        body = read_html_file(HTML_ASSETS + "index.html") #url primer nombe -> path name
+        body = read_html_file(HTML_ASSETS + "index.HTML") #url primer nombe -> path name
     elif "/info/" in path_name:
         # where is the letter? path_name.split("/")[-1] "A, C, T or G
         try:
-            body = read_html_file(HTML_ASSETS + str(path_name.split("/")[-1]) + ".html")
+            body = read_html_file(HTML_ASSETS + str(path_name.split("/")[-1]) + ".HTML")
             """if path_name == "/info/A":
-                    body = read_html_file(HTML_ASSETS + "A.html")
+                    body = read_html_file(HTML_ASSETS + "A.HTML")
                 elif path_name == "/info/C":
-                    body = read_html_file(HTML_ASSETS + "C.html")
+                    body = read_html_file(HTML_ASSETS + "C.HTML")
                 elif path_name == "/info/T":
-                    body = read_html_file(HTML_ASSETS + "T.html")
+                    body = read_html_file(HTML_ASSETS + "T.HTML")
                 elif path_name == "/info/G":
-                    body = read_html_file(HTML_ASSETS + "G.html")
+                    body = read_html_file(HTML_ASSETS + "G.HTML")
                 else:
-                    body = read_html_file(HTML_ASSETS + "ERROR.html")"""
+                    body = read_html_file(HTML_ASSETS + "ERROR.HTML")"""
         except FileNotFoundError:
-            body = read_html_file(HTML_ASSETS + "ERROR.html")
+            body = read_html_file(HTML_ASSETS + "ERROR.HTML")
     else:
-        body = read_html_file(HTML_ASSETS + "ERROR.html")
+        body = read_html_file(HTML_ASSETS + "ERROR.HTML")
 
     # -- Add the Content-Length
     header += f"Content-Length: {len(body)}\n"

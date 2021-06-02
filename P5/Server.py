@@ -38,29 +38,29 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Message to send back to the client
         path_name = self.path.split(".")[0]
         if path_name == "/" or path_name == "/index":
-            contents = read_html_file(HTML + "index.html")
+            contents = read_html_file(HTML + "index.HTML")
         elif "/info/" in path_name:
             try:
-                contents = read_html_file(HTML_ASSETS + str(path_name[-1]) + ".html")
+                contents = read_html_file(HTML_ASSETS + str(path_name[-1]) + ".HTML")
             except FileNotFoundError:
-                contents = read_html_file(HTML + "ERROR.html")
+                contents = read_html_file(HTML + "ERROR.HTML")
 
-        """if self.path == "/info/A" or self.path == "/info/A.html":
-            contents = read_html_file(HTML_ASSETS + "A.html")
-        elif self.path == "/info/C" or self.path == "/info/C.html":
-            contents = read_html_file(HTML_ASSETS + "C.html")
-        elif self.path == "/info/T" or self.path == "/info/T.html":
-            contents = read_html_file(HTML_ASSETS + "T.html")
-        elif self.path == "/info/G" or self.path == "/info/G.html":
-            contents = read_html_file(HTML_ASSETS + "G.html")
+        """if self.path == "/info/A" or self.path == "/info/A.HTML":
+            contents = read_html_file(HTML_ASSETS + "A.HTML")
+        elif self.path == "/info/C" or self.path == "/info/C.HTML":
+            contents = read_html_file(HTML_ASSETS + "C.HTML")
+        elif self.path == "/info/T" or self.path == "/info/T.HTML":
+            contents = read_html_file(HTML_ASSETS + "T.HTML")
+        elif self.path == "/info/G" or self.path == "/info/G.HTML":
+            contents = read_html_file(HTML_ASSETS + "G.HTML")
         else:
-            contents = read_html_file(HTML + "ERROR.html")"""
+            contents = read_html_file(HTML + "ERROR.HTML")"""
 
         # Generating the response message
         self.send_response(200)  # -- Status line: OK!
         length = len(contents.encode())
         # Define the content-type header:
-        self.send_header('Content-Type', 'text/html')
+        self.send_header('Content-Type', 'text/HTML')
         self.send_header('Content-Length', str(length))
 
         # The header is finished

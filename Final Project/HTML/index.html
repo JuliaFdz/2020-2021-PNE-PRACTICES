@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+    <html lang="en" dir="ltr">
+      <head>
+        <meta charset="utf-8">
+        <title>Browsing Human and Vertebrate Genome</title>
+      </head>
+      <body style="background-color: peachpuff;">
+        <h1>Browsing Human and Vertebrate Genome</h1>
+        <h2>Basic Level Services</h2>
+        <form action="list" method="get">
+          1. List of species in the genome database:<br>
+          <select name="list">
+          {% for n in range(0,context.n_species) %}
+          <option value="{{n}}" >{{n}}</option>
+          {% endfor %}
+        </select>
+           </select>
+          <input type="submit" value="Send">
+          </form>
+        <form action="karyotype" method="get">
+          2. Information about the Karyotype: <br>
+          <select name="karyotype">
+          {% for n in range(0,5) %}
+            <option value="{{n}}" >{{n}}</option>
+          {% endfor %}
+           </select>
+          <input type="submit" value="Send">
+          </form>
+        <form action="length" method="get">
+          3. Chromosome Length: <br>
+          <select name="length">
+          {% for n in range(0,7) %}
+            <option value="{{n}}" >{{n}}</option>
+          {% endfor %}
+           </select>
+          <input type="submit" value="Send">
+          </form>
+      </body>
+    </html>

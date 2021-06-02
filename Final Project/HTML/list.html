@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+    <html lang="en" dir="ltr">
+      <head>
+        <meta charset="utf-8">
+        <title>List species</title>
+      </head>
+      <body style="background-color: khaki;">
+      {% for n in context.list%}
+        <h1>Sequence number {{context.number}}</h1>
+        <p>{{context.list}}</p>
+      {% endfor %}
+        <a href="/">Main page</a>
+      </body>
+    </html>

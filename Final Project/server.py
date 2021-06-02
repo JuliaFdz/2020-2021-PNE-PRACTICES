@@ -5,32 +5,22 @@ import colorama
 from urllib.parse import urlparse, parse_qs
 import server_utils as su
 
-LIST_SEQUENCES = ['ATTCTATGGATGACT', 'AACCTTTGAGATCAT', 'ATTGTTCTTCTTACT','AATACTTTTATCCCT', 'AAATTTCTCACTTTA']
-LIST_GENES = {'ADA', 'FRAT1','FXN', 'RNU6_269P', 'U5'}
-OPERATION_LIST = ["Info", "Complement", "Reverse"]
 # Define the Server's port
 PORT = 8080
-HTML_ASSETS = "./HTML/info/"
-HTML = "./HTML/"
-BASES_INFORMATION = {
-    "A": {"name": "ADENINE",
-          "formula": "C5H5N5",
-          "link": "https://en.wikipedia.org/wiki/Adenine",
-          "color": "lightgreen"},
-    "C": {"name": "CITOSINE",
-          "formula": "C4H5N3O",
-          "link": "https://en.wikipedia.org/wiki/Citosine",
-          "color": "yellow"},
-    "G": {"name": "GUANINE",
-          "formula": "C5H5N5O",
-          "link": "https://en.wikipedia.org/wiki/Guanine",
-          "color": "lightblue"},
-    "T": {"name": "TIMINE",
-          "formula": "C5H5N2O2",
-          "link": "https://en.wikipedia.org/wiki/Timine",
-          "color": "pink"}
+LIST_SPECIES = ['Human', 'Cat', 'Mouse','Clown Anemonefish','Blue whale','Gorilla','Great Tit','Channel Catfish','Eurasian Red Squirrel', 'Zebrafish']
+DICT_GENES = {
+    "FRAT1": "ENSG00000165879",
+    "ADA": "ENSG00000196839",
+    "FXN": "ENSG00000165060",
+    "RNU6_269P": "ENSG00000212379",
+    "SMIM36": "ENSG00000261873",
+    "DACH1": "ENSGGOG00000004058",
+    "GLS": "ENSBMSG00010000717",
+    "SURF6": "ENSPMJG00000006670",
+    "oafa": "ENSIPUG00000011673",
+    "ANKAR": "ENSSVLG00005000904"
 }
-# -- This is for preventing the error: "Port already in use"
+#SMIM36 chr 17 human; 13 gorilla, blue whale, great tit, channel catfish, eu red squirrel
 socketserver.TCPServer.allow_reuse_address = True
 
 
@@ -69,16 +59,14 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Message to send back to the client
         context = {}
         if path_name == "/":
-            context['n_sequences'] = len(LIST_SEQUENCES)
-            context['list_genes'] = LIST_GENES
-            contents = su.read_template_html_file('./HTML/index.html').render(context=context)
-        elif path_name == '/test':
-            contents = su.read_template_html_file('./HTML/test.html').render()
+            context['n_species'] = len(LIST_SPECIES)
+            context['list_genes'] = LIST_SPECIES
+            contents = su.read_template_html_file('HTML/index.html').render(context=context)
         elif path_name == '/ping':
-            contents = su.read_template_html_file('./HTML/ping.html').render()
-        elif path_name == '/get':
-            number_sequence = arguments['sequence'][0]
-            contents = su.get(LIST_SEQUENCES,number_sequence)
+            contents = su.read_template_html_file('HTML/ping.HTML').render()
+        elif path_name == '/list':
+            number_list = arguments['list'][0]
+            contents = su.list(LIST_SPECIES,number_list)
         elif path_name == '/gene':
             gene = arguments['gene'][0]
             contents = su.gene(gene)
@@ -92,7 +80,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             elif operation == "rev":
                 contents = su.rev(sequence)
         else:
-            contents = su.read_template_html_file('./HTML/error.html').render()
+            contents = su.read_template_html_file('HTML/error.html').render()
 
         # Generating the response message
         self.send_response(200)  # -- Status line: OK!

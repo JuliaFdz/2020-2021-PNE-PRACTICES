@@ -61,25 +61,25 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # that everything is ok
         # Message to send back to the client
         if self.path == "/":
-            contents = read_html_file(HTML + "index.html")
+            contents = read_html_file(HTML + "index.HTML")
         elif "/info/" in self.path:
             base = self.path.split("/")[-1]
             context = BASES_INFORMATION[base]
             context["letter"] = base
-            contents = read_template_html_file(HTML_ASSETS + "General.html").render(base_info=context)
-        elif self.path.endswith(".html"):
+            contents = read_template_html_file(HTML_ASSETS + "General.HTML").render(base_info=context)
+        elif self.path.endswith(".HTML"):
             try:
                 contents = read_html_file(HTML + self.path)
             except FileNotFoundError:
-                contents = read_html_file(HTML + "ERROR.html")
+                contents = read_html_file(HTML + "ERROR.HTML")
         else:
-            contents = read_html_file(HTML + "ERROR.html")
+            contents = read_html_file(HTML + "ERROR.HTML")
 
         # Generating the response message
         self.send_response(200)  # -- Status line: OK!
         length = len(contents.encode())
         # Define the content-type header:
-        self.send_header('Content-Type', 'text/html')
+        self.send_header('Content-Type', 'text/HTML')
         self.send_header('Content-Length', str(length))
 
         # The header is finished

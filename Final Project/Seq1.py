@@ -27,13 +27,13 @@ class Seq:
         print(self.strbases)
 
     @staticmethod
-    def is_valid_sequence(bases):
+    def is_valid_sequence_2(bases):
         for c in bases:
             if c != 'A' and c != 'C' and c != 'G' and c != 'T':
                 return False
         return True
 
-    def is_valid_sequence_2(self):
+    def is_valid_sequence(self):
         for c in self.strbases:
             if c != 'A' and c != 'C' and c != 'G' and c != 'T':
                 return False
@@ -149,14 +149,6 @@ class Seq:
             if gene_dict[n] == max(gene_dict.values()):
                 frq_base += n + ' '
         return frq_base
-
-    @staticmethod
-    def processing(gene_dict):
-        list_values = gene_dict.values()
-        most_common_base = max(list_values)
-        for base, n in gene_dict.items():
-            if n == most_common_base:
-                return base, n
 
 
 
