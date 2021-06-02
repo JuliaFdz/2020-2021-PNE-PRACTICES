@@ -7,7 +7,7 @@ import server_utils as su
 
 # Define the Server's port
 PORT = 8080
-LIST_SPECIES = ['Human', 'Cat', 'Mouse','Clown Anemonefish','Blue whale','Gorilla','Great Tit','Channel Catfish','Eurasian Red Squirrel', 'Zebrafish']
+LIST_SPECIES = ['Human', 'Cat', 'Mouse','Clown Anemonefish','Blue Whale','Gorilla','Great Tit','Channel Catfish','Eurasian Red Squirrel', 'Zebrafish']
 DICT_GENES = {
     "FRAT1": "ENSG00000165879",
     "ADA": "ENSG00000196839",
@@ -60,27 +60,19 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         context = {}
         if path_name == "/":
             context['n_species'] = len(LIST_SPECIES)
-            context['list_genes'] = LIST_SPECIES
+            context['list_species'] = LIST_SPECIES
             contents = su.read_template_html_file('HTML/index.html').render(context=context)
         elif path_name == '/ping':
             contents = su.read_template_html_file('HTML/ping.HTML').render()
         elif path_name == '/list':
-            number_list = arguments['list'][0]
-            contents = su.list(LIST_SPECIES,number_list)
+            list_number = arguments['list'][0]
+            contents = su.list(list_number, LIST_SPECIES)
         elif path_name == '/gene':
             gene = arguments['gene'][0]
             contents = su.gene(gene)
-        elif path_name == "/operation":
-            sequence = arguments["sequence"][0]
-            operation = arguments["calculation"][0]
-            if operation == "info":
-                contents = su.info(sequence)
-            elif operation == "comp":
-                contents = su.comp(sequence)
-            elif operation == "rev":
-                contents = su.rev(sequence)
+
         else:
-            contents = su.read_template_html_file('HTML/error.html').render()
+            contents = su.read_template_html_file('./HTML/ERROR.html').render()
 
         # Generating the response message
         self.send_response(200)  # -- Status line: OK!

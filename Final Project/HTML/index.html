@@ -7,33 +7,42 @@
       <body style="background-color: peachpuff;">
         <h1>Browsing Human and Vertebrate Genome</h1>
         <h2>Basic Level Services</h2>
-        <form action="list" method="get">
+        <font face="Comic Sans MS,arial">
+        <form action="list" method="get"><br>
           1. List of species in the genome database:<br>
+          Please select a limit:
           <select name="list">
           {% for n in range(0,context.n_species) %}
           <option value="{{n}}" >{{n}}</option>
           {% endfor %}
-        </select>
            </select>
           <input type="submit" value="Send">
-          </form>
+            <font size="1">
+              (Being 0  the initial number)
+              </font>
+                </form>
+        <hr><br>
         <form action="karyotype" method="get">
           2. Information about the Karyotype: <br>
-          <select name="karyotype">
-          {% for n in range(0,5) %}
-            <option value="{{n}}" >{{n}}</option>
+          Choose a Specie:
+           <select name="specie">
+          {% for n in context.list_species %}
+              <option value="{{n}}" >{{n}}</option>
           {% endfor %}
-           </select>
-          <input type="submit" value="Send">
-          </form>
+          </select>
+          <input type="submit" value="Send"> <br>
+                  </form>
+
+        <hr><br>
         <form action="length" method="get">
           3. Chromosome Length: <br>
-          <select name="length">
-          {% for n in range(0,7) %}
-            <option value="{{n}}" >{{n}}</option>
-          {% endfor %}
-           </select>
-          <input type="submit" value="Send">
+            Select the Specie:
+              <input type="text" name="msg">
+              <input type="submit" value="Send"><br>
+            Select the Chromosome:
+              <input type="text" name="msg">
+              <input type="submit" value="Send"><br>
           </form>
+            </font>
       </body>
     </html>

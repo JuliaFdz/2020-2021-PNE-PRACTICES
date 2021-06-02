@@ -6,7 +6,7 @@ from urllib.parse import urlparse, parse_qs
 import server_utils as su
 
 LIST_SEQUENCES = ['ATTCTATGGATGACT', 'AACCTTTGAGATCAT', 'ATTGTTCTTCTTACT','AATACTTTTATCCCT', 'AAATTTCTCACTTTA']
-LIST_GENES = {'ADA', 'FRAT1','FXN', 'RNU6_269P', 'U5'}
+LIST_GENES = {'ADA', 'FRAT1', 'FXN', 'RNU6_269P', 'U5'}
 OPERATION_LIST = ["Info", "Complement", "Reverse"]
 # Define the Server's port
 PORT = 8080
@@ -78,7 +78,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             contents = su.read_template_html_file('./HTML/ping.html').render()
         elif path_name == '/get':
             number_sequence = arguments['sequence'][0]
-            contents = su.get(LIST_SEQUENCES,number_sequence)
+            contents = su.get(LIST_SEQUENCES, number_sequence)
         elif path_name == '/gene':
             gene = arguments['gene'][0]
             contents = su.gene(gene)

@@ -94,15 +94,19 @@ def gene(gene):
     contents = read_template_html_file("HTML/gene.HTML").render(context=context)
     return contents
 
-def list( list, list_number):
+def list(list_number, list):
     i = 0
-    context = {}
-    while i != list_number:
-        context[i] = {
-            'number': list_number,
-            'sequence': list[i],
+    names = []
+    end = 1
+    while i <= int(list_number):
+        names.append(list[i])
+        context = {
+            "list_number": list_number,
+            'species': names,
+            'end': end
         }
-        contents = read_template_html_file('HTML/list.html').render(context=context)
         i += 1
+        end += 1
+    contents = read_template_html_file('HTML/list.html').render(context=context)
     return contents
 

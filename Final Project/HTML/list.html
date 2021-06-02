@@ -5,10 +5,17 @@
         <title>List species</title>
       </head>
       <body style="background-color: khaki;">
-      {% for n in context.list%}
-        <h1>Sequence number {{context.number}}</h1>
-        <p>{{context.list}}</p>
-      {% endfor %}
+      <font face="Comic Sans MS,arial,verdana">
+        Total Species: 10 <br>
+        The chosen Limit: {{context.end}}<br>
+        The name of the spices are: <br>
+        <font size="2">
+        {%for n in context.species%}
+      <ul><li> {{n}} </li></ul>
+        {% endfor %}
         <a href="/">Main page</a>
+          </font>
+      </font>
+
       </body>
     </html>
